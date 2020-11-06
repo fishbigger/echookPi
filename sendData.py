@@ -54,8 +54,8 @@ def convertData(indentifier, value):
 		if hundreds == 0:
 			dataByte1 = 0xFF
 
-	dataByte1 = bytes([dataByte1])
-	dataByte2 = bytes([dataByte2])
+	dataByte1.to_bytes(1, "big")
+	dataByte2.to_bytes(1, "big")
 
 	return dataByte1, dataByte2
 
