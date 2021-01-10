@@ -11,6 +11,8 @@ BLUETOOTH DATA PACKETING FUNCTIONS
  * value:       the value to send (typically some caluclated value from a sensor)
 """
 
+import random
+
 def convertData(indentifier, value):
 	value = float(value)
 	if value == 0:
@@ -59,6 +61,11 @@ def convertData(indentifier, value):
 
 	return dataByte1, dataByte2
 
-if __name__ == '__main__':
-	while True:
-		print (convertData("hello", input(":")))
+	try:
+		dataToSend = convertData("Vt", random.randint(0, 255))
+
+		with open ('/dev/rfcomm0', 'w', 1) as f:
+			f.write(dataToSend)
+
+	except:
+		print ("Something went wrong")
