@@ -61,11 +61,11 @@ def convertData(indentifier, value):
 
 	return dataByte1, dataByte2
 
-	try:
-		dataToSend = convertData("Vt", random.randint(0, 255))
+try:
+	dataToSend = convertData("Vt", random.randint(0, 255))
 
-		with open ('/dev/rfcomm0', 'w', 1) as f:
-			f.write(dataToSend)
+	with open ('/dev/rfcomm0', 'w', 1) as f:
+		f.write(dataToSend)
 
-	except:
-		print ("Something went wrong")
+except:
+	print ("Something went wrong")
